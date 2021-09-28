@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /glustermnt/heimdall/:/config
+    ports:
+      - 8080:80
+      - 8443:443
