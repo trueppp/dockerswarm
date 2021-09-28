@@ -7,7 +7,7 @@ services:
       - PGID=1000a
       - TZ=America/Toronto
     volumes:
-      - /glustermnt/heimdall:/config
+      - /glustermnt/heimdall/:/config
     ports:
       - 8080:80
       - 8443:443
