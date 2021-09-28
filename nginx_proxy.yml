@@ -17,7 +17,6 @@ services:
       - ./glustermnt/nginx/letsencrypt:/etc/letsencrypt
   db:
     image: 'jc21/mariadb-aria:latest'
-    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
