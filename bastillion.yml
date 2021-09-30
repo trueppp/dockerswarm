@@ -7,7 +7,7 @@ services:
       - PGID=1001
       - TZ=America/Toronto
     volumes:
-      - glusterbastillion:/opt/bastillion/jetty/bastillion/WEB-INF/classes/keydb ecosi/bastillion
+      - glusterbastillion:/opt/bastillion/jetty/bastillion/WEB-INF/classes/keydb
     ports:
       - 8083:80
       - 8447:443
