@@ -7,7 +7,11 @@ services:
       - PGID=1000a
       - TZ=America/Toronto
     volumes:
-      - /glustermnt/heimdall/:/config
+      - glusterheimdall:/config
     ports:
       - 8080:80
       - 8443:443
+volumes:
+  glusterheimdall:
+    driver: glusterfs
+    name: "gv0/heimdall" 
