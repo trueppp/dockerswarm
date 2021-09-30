@@ -9,8 +9,8 @@ services:
     volumes:
       - glusterbatillion:/opt/bastillion/jetty/bastillion/WEB-INF/classes/keydb ecosi/bastillion
     ports:
-      - 8080:80
-      - 8443:443
+      - 8083:80
+      - 8447:443
 volumes:
   glusterheimdall:
     driver: glusterfs
