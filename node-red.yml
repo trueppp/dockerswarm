@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-  heimdall:
+  node-red:
     image: nodered/node-red
     environment:
       - PUID=1000
