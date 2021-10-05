@@ -4,7 +4,7 @@ services:
     image: ghcr.io/linuxserver/heimdall
     environment:
       - PUID=1000
-      - PGID=1000a
+      - PGID=1000
       - TZ=America/Toronto
     volumes:
       - glusterheimdall:/config
