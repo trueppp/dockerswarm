@@ -7,7 +7,7 @@ services:
       - PGID=1000a
       - TZ=America/Toronto
     volumes:
-      - glusterheimdall:/config
+      - glusternodered:/config
     ports:
       - 1880:1880
 volumes:
