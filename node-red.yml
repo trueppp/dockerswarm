@@ -1,1 +1,17 @@
-
+version: "3.4"
+services:
+  heimdall:
+    image: nodered/node-red
+    environment:
+      - PUID=1000
+      - PGID=1000a
+      - TZ=America/Toronto
+    volumes:
+      - glusterheimdall:/config
+    ports:
+      - 8080:80
+      - 8443:443
+volumes:
+  glusternodered:
+    driver: glusterfs
+    name: "gv0/node-red"
