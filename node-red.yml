@@ -7,7 +7,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - glusternodered:/config
+      - glusternodered:/data
     ports:
       - 1880:1880
 volumes:
