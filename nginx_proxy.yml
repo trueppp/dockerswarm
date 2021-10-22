@@ -13,8 +13,8 @@ services:
       DB_MYSQL_PASSWORD: "npm"
       DB_MYSQL_NAME: "npm"
     volumes:
-      - glusternginxdata:/data
-      - glusternginxssl:/etc/letsencrypt
+      - /dockerdata/dockervol/nginx/data:/data
+      - /dockerdata/dockervol/nginx/letsencrypt:/etc/letsencrypt
   db:
     image: 'jc21/mariadb-aria:latest'
     environment:
@@ -23,17 +23,8 @@ services:
       MYSQL_USER: 'npm'
       MYSQL_PASSWORD: 'npm'
     volumes:
-      - glusternginxsQl:/var/lib/mysql
-volumes:
-  glusternginxdata:
-    driver: glusterfs
-    name: "gv0/nginx/data"
-  glusternginxssl:
-    driver: glusterfs
-    name: "gv0/nginx/letsencrypt"
-  glusternginxsQl:
-    driver: glusterfs
-    name: "gv0/nginx/mysql"
+      - /dockerdata/dockervol/nginx/letsencrypt:/var/lib/mysql
+
         
     
    
