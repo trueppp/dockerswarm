@@ -8,13 +8,10 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - glusterradarr:/config
-      - /gdrive_media/Movies/:/movies #optional
-      - /path/to/downloadclient-downloads:/downloads #optional
+      - /dockerdata/dockervol/radarr/:/config
+      - /nfs/media/Movies/:/movies #optional
+      - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
-volumes:
-  glusterradarr:
-    driver: glusterfs
-    name: "gv0/radarr"     
+  
