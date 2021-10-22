@@ -10,4 +10,5 @@ services:
       - /resilio/config:/config
       - /resilio/downloads:/downloads
       - /dockerdata:/sync
-    network: host
+    network: 
+      - host
