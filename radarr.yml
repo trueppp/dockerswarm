@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=America/Toronto
     volumes:
       - /dockerdata/dockervol/radarr/:/config
       - /nfs/media/Movies/:/movies #optional
