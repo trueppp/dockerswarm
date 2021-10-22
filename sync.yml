@@ -10,4 +10,6 @@ services:
       - /resilio/config:/config
       - /resilio/downloads:/downloads
       - /dockerdata:/sync
+    deploy:
+      mode: global
     network_mode: host
