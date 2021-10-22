@@ -10,6 +10,4 @@ services:
       - /resilio/config:/config
       - /resilio/downloads:/downloads
       - /dockerdata:/sync
-    ports:
-      - 8080:80
-      - 8443:443
+    network: host
