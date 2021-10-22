@@ -12,4 +12,9 @@ services:
       - /dockerdata:/sync
     deploy:
       mode: global
-    network_mode: host
+    networks:
+       - outside
+networks:
+  outside:
+    external:
+      name: "host"
