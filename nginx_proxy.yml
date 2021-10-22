@@ -23,7 +23,7 @@ services:
       MYSQL_USER: 'npm'
       MYSQL_PASSWORD: 'npm'
     volumes:
-      - /dockerdata/dockervol/nginx/mysql:/var/lib/mysql
+      - /dockerdata/dockervol/nginx/letsencrypt:/var/lib/mysql
 
         
     
