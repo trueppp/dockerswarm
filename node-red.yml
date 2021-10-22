@@ -7,10 +7,6 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - glusternodered:/data
+      - /dockerdata/dockervol/node-red:/data
     ports:
       - 1880:1880
-volumes:
-  glusternodered:
-    driver: glusterfs
-    name: "gv0/node-red"
