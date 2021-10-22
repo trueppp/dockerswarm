@@ -12,6 +12,9 @@ services:
       DB_MYSQL_USER: "npm"
       DB_MYSQL_PASSWORD: "npm"
       DB_MYSQL_NAME: "npm"
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
     volumes:
       - /dockerdata/dockervol/nginx/data:/data
       - /dockerdata/dockervol/nginx/letsencrypt:/etc/letsencrypt
