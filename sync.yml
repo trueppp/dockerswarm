@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  resiliosync:
+    image: lscr.io/linuxserver/resilio-sync
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /resilio/config:/config
+      - /resilio/downloads:/downloads
+      - /dockerdata:/sync
+    ports:
+      - 8080:80
+      - 8443:443
