@@ -9,7 +9,7 @@ services:
       - TZ=America/Toronto
     volumes:
       - /dockerdata/dockervol/sonarr/:/config
-      - /nfs/media/TV/:/movies #optional
+      - /nfs/media/TV/:/tv #optional
       - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
       - 8989:8989
