@@ -11,9 +11,10 @@ services:
       - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
     networks:
       - pi-zwave
-    placement:
-        constraints:
-          - "node.labels.zwave==true"
+    deploy:
+      placement:
+          constraints:
+            - "node.labels.zwave==true"
     devices:
       - '/dev/ttyACM0:/dev/ttyACM0'
     volumes:
