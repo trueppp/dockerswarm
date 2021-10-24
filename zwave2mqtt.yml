@@ -22,7 +22,7 @@ services:
      deploy:
        placement:
         constraints:
-          - node.labels.zwav=="true"
+          - node.labels.zwave=="true"
 networks:
   zwave:
   volumes:
