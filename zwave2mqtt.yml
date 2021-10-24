@@ -2,7 +2,6 @@ version: '3.4'
 services:
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
-    restart: always
     tty: true
     stop_signal: SIGINT
     environment:
@@ -19,7 +18,7 @@ services:
     deploy:
        placement:
         constraints:
-          - node.labels.zwave=="true"
+          - node.labels.zwave==true
 networks:
   zwave:
 
