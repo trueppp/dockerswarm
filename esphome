@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+  esphome:
+    image: esphome/esphome
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /dockerdata/dockervol/esphome:/data
+    ports:
+      - 6052:6052
+      - 6123:6123
