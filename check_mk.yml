@@ -1,7 +1,7 @@
 version: "3"
 services:
   omd:
-    image: registry.gitlab.com/juan.mesa/check_mk-raw-edition-docker:telegram
+    image: checkmk/check-mk-raw
     ports:
       - 5000:5000
 #      - 6557:6557
