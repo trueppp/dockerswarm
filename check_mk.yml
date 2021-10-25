@@ -7,7 +7,7 @@ services:
 #      - 6557:6557
 #      - 6556:6556
     volumes:
-      - /dockerdata/dockervol/nginx/data/checkmk:/omd/sites 
+      - /dockerdata/dockervol/checkmk:/omd/sites 
     environment:
       - "TZ=America/Montreal"
       - PUID=1000
