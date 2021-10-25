@@ -3,21 +3,14 @@ services:
   omd:
     image: registry.gitlab.com/juan.mesa/check_mk-raw-edition-docker:telegram
     ports:
-      - 5001:5000
+      - 5000:5000
 #      - 6557:6557
 #      - 6556:6556
     volumes:
-      - /omd/sites:/omd/sites 
+      - /dockerdata/dockervol/nginx/data/checkmk:/omd/sites 
     enviromnet:
-      - "TZ=Europe/Madrid"
-    restart: always
+      - "TZ=America/Montreal"
+      - PUID=1000
+      - PGID=1000
     networks:
-      omdnet:
-        ipv4_address: 10.100.100.2
 
-networks:
-  omdnet:
-    driver: bridge
-    ipam:
-      config:
-        - subent: 10.100.100.0/30
