@@ -1,0 +1,23 @@
+version: "3"
+services:
+  omd:
+    image: registry.gitlab.com/juan.mesa/check_mk-raw-edition-docker:telegram
+    ports:
+      - 5001:5000
+#      - 6557:6557
+#      - 6556:6556
+    volumes:
+      - /omd/sites:/omd/sites 
+    enviromnet:
+      - "TZ=Europe/Madrid"
+    restart: always
+    networks:
+      omdnet:
+        ipv4_address: 10.100.100.2
+
+networks:
+  omdnet:
+    driver: bridge
+    ipam:
+      config:
+        - subent: 10.100.100.0/30
