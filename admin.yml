@@ -33,7 +33,6 @@ services:
   
   syncthing:
     image: syncthing/syncthing
-    container_name: syncthing
     hostname: my-syncthing
     environment:
       - PUID=1000
