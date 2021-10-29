@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  app:
+  nginxapp:
     image: 'jc21/nginx-proxy-manager:latest'
     ports:
       - '80:80'
@@ -18,7 +18,7 @@ services:
     volumes:
       - /dockerdata/dockervol/nginx/data:/data
       - /dockerdata/dockervol/nginx/letsencrypt:/etc/letsencrypt
-  db:
+  nginxdb:
     image: 'jc21/mariadb-aria:latest'
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
@@ -30,6 +30,28 @@ services:
       TZ: America/Toronto
     volumes:
       - /dockerdata/dockervol/nginx/mysql:/var/lib/mysql
+  unifi-controller:
+    image: lscr.io/linuxserver/unifi-controller
+    container_name: unifi-controller
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MEM_LIMIT=1024M #optional
+      - MEM_STARTUP=1024M #optional
+    volumes:
+      - /dockerdata/dockervol/unifi/:/config
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8443:8443
+      - 1900:1900/udp #optional
+      - 8843:8843 #optional
+      - 8880:8880 #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional
+    restart: unless-stopped
+    
   
   syncthing:
     image: syncthing/syncthing
