@@ -1,0 +1,52 @@
+version: '3.4'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /dockerdata/dockervol/nginx/data:/data
+      - /dockerdata/dockervol/nginx/letsencrypt:/etc/letsencrypt
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - /dockerdata/dockervol/nginx/mysql:/var/lib/mysql
+	  
+  syncthing:
+    image: syncthing/syncthing
+    container_name: syncthing
+    hostname: my-syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /dockerdata:/var/syncthing
+    #ports:
+    #  - 8384:8384
+    #  - 22000:22000/tcp
+    #  - 22000:22000/udp
+    restart: unless-stopped
+    deploy:
+      mode: global
+    networks:
+      - outside
+networks:
+  outside:
+    external:
+      name: "host"
