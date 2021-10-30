@@ -53,5 +53,5 @@ services:
       - /dockerdata/dockervol/nzbget:/config
       - //nfs/diskstation/nzbget:/downloads #optional
     ports:
-      - 6789:6789
+      - 6790:6789
     restart: unless-stopped
