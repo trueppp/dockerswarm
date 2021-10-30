@@ -59,7 +59,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
-      - "82:82/tcp"
+      - "82:80/tcp"
     environment:
       TZ: 'America/Montreal'
       PUID: 1000
