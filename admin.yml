@@ -71,6 +71,16 @@ services:
       mode: global
     networks:
       - outside
+  
+  mosquitto:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 8883:8883
+    volumes:
+      -  /dockerdata/dockervol/mosquitto/data:/mosquitto/data
+      -  /dockerdata/dockervol/mosquitto/logs:/mosquitto/logs
+      -  /dockerdata/dockervol/mosquitto/config:/mosquitto/config
       
 networks:
   outside:
