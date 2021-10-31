@@ -54,4 +54,7 @@ services:
       - //nfs/diskstation/nzbget:/downloads #optional
     ports:
       - 6790:6789
-    restart: unless-stopped
+    deploy:
+       placement:
+        constraints:
+          - node.labels.powerful==true    
