@@ -36,6 +36,10 @@ services:
       - /dockerdata/dockervol/homeassistant:/config
     ports:
       - 8123:8123 #optional
+    deploy:
+      placement:
+        preference:
+          - node.labels.powerful==true   
 
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
