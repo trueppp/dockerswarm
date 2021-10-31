@@ -38,7 +38,7 @@ services:
       - outside
     deploy:
       placement:
-        preferences:
+        constraints:
           - "node.labels.powerful==true"
 
   zwavejs2mqtt:
