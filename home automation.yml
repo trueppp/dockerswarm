@@ -34,6 +34,8 @@ services:
       - /dockerdata/dockervol/homeassistant:/config
     ports:
       - 8123:8123 #optional
+    network:
+      - outside
     deploy:
       placement:
         preferences:
@@ -56,3 +58,7 @@ services:
        placement:
         constraints:
           - node.labels.zwave==true
+          networks:
+  outside:
+    external:
+      name: "host"
