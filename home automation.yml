@@ -37,7 +37,7 @@ services:
     deploy:
       placement:
         preferences:
-          - node.labels.powerful==true   
+          - "node.labels.powerful==true"
 
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
