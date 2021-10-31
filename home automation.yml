@@ -23,6 +23,19 @@ services:
     ports:
       - 6052:6052
       - 6123:6123
+  
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant
+    container_name: homeassistant
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /path/to/data:/config
+    ports:
+      - 8123:8123 #optional
 
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
