@@ -33,7 +33,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /path/to/data:/config
+      - /dockerdata/dockervol/homeassistant:/config
     ports:
       - 8123:8123 #optional
 
