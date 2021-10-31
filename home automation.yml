@@ -56,9 +56,9 @@ services:
       - '3000:3000' # port for zwave-js websocket server
     deploy:
        placement:
-        constraints:
-          - node.labels.zwave==true
-          networks:
+         constraints:
+           - node.labels.zwave==true
+networks:
   outside:
     external:
       name: "host"
