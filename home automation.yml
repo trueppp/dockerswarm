@@ -34,8 +34,6 @@ services:
       - /dockerdata/dockervol/homeassistant:/config
     ports:
       - 8123:8123 #optional
-    networks:
-      - outside
     deploy:
       placement:
         constraints:
