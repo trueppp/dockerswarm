@@ -36,7 +36,7 @@ services:
       - 8123:8123 #optional
     deploy:
       placement:
-        preference:
+        preferences:
           - node.labels.powerful==true   
 
   zwavejs2mqtt:
