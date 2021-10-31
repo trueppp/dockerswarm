@@ -51,7 +51,7 @@ services:
       - TZ=America/Toronto
     volumes:
       - /dockerdata/dockervol/nzbget:/config
-      - //nfs/diskstation/nzbget:/downloads #optional
+      - /nfs/diskstation/nzbget:/downloads #optional
     ports:
       - 6790:6789
     deploy:
