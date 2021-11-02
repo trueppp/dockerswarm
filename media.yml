@@ -70,5 +70,6 @@ services:
     volumes:
       - /data/plex:/config
       - /nfs/media/TV:/tv
-      - /nfs/media/Movies:/movies 
+      - /nfs/media/Movies:/movies
+      - '/dev/dri:/dev/dri' 
           
