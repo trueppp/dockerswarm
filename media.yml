@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Montreal
     volumes:
-      - /dockerdata/dockervol/ombi/:/config
+      - /data/ombi/:/config
     ports:
       - 3579:3579
       
@@ -20,7 +20,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /dockerdata/dockervol/radarr/:/config
+      - /data/radarr/:/config
       - /nfs/media/Movies/:/movies #optional
       - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
@@ -35,7 +35,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /dockerdata/dockervol/sonarr/:/config
+      - /data/sonarr/:/config
       - /nfs/media/TV/:/tv #optional
       - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
@@ -50,11 +50,25 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /dockerdata/dockervol/nzbget:/config
+      - /data/nzbget:/config
       - /nfs/diskstation/nzbget:/downloads #optional
     ports:
       - 6790:6789
     deploy:
        placement:
         constraints:
-          - node.labels.powerful==true    
+          - node.labels.powerful==true
+  plex:
+    image: lscr.io/linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - /data/plex:/config
+      - /nfs/media/TV:/tv
+      - /nfs/media/Movies:/movies 
+          
