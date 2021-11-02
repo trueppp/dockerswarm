@@ -11,6 +11,10 @@ services:
       - /data/ombi/:/config
     ports:
       - 3579:3579
+    deploy:
+      placement:
+        constraints:
+          - node.labels.powerful==true
       
   radarr:
     image: ghcr.io/linuxserver/radarr
@@ -25,7 +29,10 @@ services:
       - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
       - 7878:7878
-    restart: unless-stopped
+    deploy:
+      placement:
+        constraints:
+          - node.labels.powerful==true
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
@@ -40,7 +47,10 @@ services:
       - /nfs/diskstation/nzbget/complete:/downloads #optional
     ports:
       - 8989:8989
-    restart: unless-stopped
+    deploy:
+      placement:
+        constraints:
+          - node.labels.powerful==true
     
   nzbget:
     image: lscr.io/linuxserver/nzbget
