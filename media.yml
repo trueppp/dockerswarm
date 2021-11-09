@@ -44,7 +44,7 @@ services:
     volumes:
       - /data/sonarr/:/config
       - /nfs/media/TV/:/tv #optional
-      - /nfs/diskstation/nzbget/complete:/downloads #optional
+      - /data/bigdrive/nzbget/completed/Series:/downloads #optional
     ports:
       - 8989:8989
     deploy:
