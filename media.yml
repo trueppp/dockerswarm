@@ -61,7 +61,7 @@ services:
       - TZ=America/Toronto
     volumes:
       - /data/nzbget:/config
-      - /nfs/diskstation/nzbget:/downloads #optional
+      - /data/bigdrive/nzbget:/downloads #optional
     ports:
       - 6790:6789
     deploy:
