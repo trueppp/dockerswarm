@@ -26,7 +26,7 @@ services:
     volumes:
       - /data/radarr/:/config
       - /nfs/media/Movies/:/movies #optional
-      - /nfs/diskstation/nzbget/complete:/downloads #optional
+      - /data/bigdrive/nzbget/completed/Movies:/downloads #optional
     ports:
       - 7878:7878
     deploy:
@@ -68,26 +68,26 @@ services:
        placement:
         constraints:
           - node.labels.powerful==true
-  plex:
-    image: lscr.io/linuxserver/plex
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - VERSION=docker
-      - PLEX_CLAIM= #optional
-    volumes:
-      - /data/plex:/config
-      - /nfs/media/TV:/tv
-      - /nfs/media/Movies:/movies
-      - /dev/dri:/dev/dri
-    networks:
-      - outside
-    deploy:
-      placement:
-        constraints:
-          - node.labels.powerful==true
+#  plex:
+#    image: lscr.io/linuxserver/plex
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - VERSION=docker
+#      - PLEX_CLAIM= #optional
+#    volumes:
+#      - /data/plex:/config
+#      - /nfs/media/TV:/tv
+#      - /nfs/media/Movies:/movies
+#      - /dev/dri:/dev/dri
+#    networks:
+#      - outside
+#    deploy:
+#      placement:
+#        constraints:
+#          - node.labels.powerful==true
 
-networks:
-  outside:
-    external:
-      name: "host"
+#networks:
+#  outside:
+#    external:
+#      name: "host"
