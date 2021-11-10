@@ -79,7 +79,7 @@ services:
       - /data/plex:/config
       - /nfs/media/TV:/tv
       - /nfs/media/Movies:/movies
-      - '/dev/dri:/dev/dri'
+      - /dev/dri:/dev/dri
     networks:
       - outside
     deploy:
