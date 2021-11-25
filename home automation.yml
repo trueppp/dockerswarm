@@ -1,44 +1,5 @@
 version: "3.4"
 services:
-
-#  node-red:
-#    image: nodered/node-red
-#    environment:
-#      - PUID=1000
-#      - PGID=1000
-#      - TZ=America/Toronto
-#    volumes:
-#      - /dockerdata/dockervol/node-red:/data
-#    ports:
-#      - 1880:1880
-
-#  esphome:
-#    image: esphome/esphome
-#    environment:
-#      - PUID=1000
-#      - PGID=1000
-#      - TZ=America/Toronto
-#    volumes:
-#      - /dockerdata/dockervol/esphome:/data
-#    ports:
-#      - 6052:6052
-#      - 6123:6123
-#  
-#  homeassistant:
-#    image: lscr.io/linuxserver/homeassistant
-#    environment:
-#     - PUID=1000
-#      - PGID=1000
-#      - TZ=America/Toronto
-#    volumes:
-#      - /dockerdata/dockervol/homeassistant:/config
-#    ports:
-#      - 8123:8123 #optional
-#    deploy:
-#      placement:
-#        constraints:
-#          - "node.labels.powerful==true"
-
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
     tty: true
