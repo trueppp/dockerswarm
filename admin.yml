@@ -1,36 +1,5 @@
 version: '3.4'
-services:
-  nginxapp:
-    image: 'jc21/nginx-proxy-manager:latest'
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    environment:
-      DB_MYSQL_HOST: "nginxdb"
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npm"
-      DB_MYSQL_PASSWORD: "npm"
-      DB_MYSQL_NAME: "npm"
-      PUID: 1000
-      PGID: 1000
-      TZ: America/Toronto
-    volumes:
-      - /dockerdata/dockervol/nginx/data:/data
-      - /dockerdata/dockervol/nginx/letsencrypt:/etc/letsencrypt
-  nginxdb:
-    image: 'jc21/mariadb-aria:latest'
-    environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
-      PUID: 1000
-      PGID: 1000
-      TZ: America/Toronto
-    volumes:
-      - /dockerdata/dockervol/nginx/mysql:/var/lib/mysql
-      
+services:  
   unifi-controller:
     image: lscr.io/linuxserver/unifi-controller
     environment:
@@ -55,7 +24,6 @@ services:
       placement:
         constraints:
           - node.labels.powerful==true    
-  
   pihole:
     image: pihole/pihole:latest
     ports:
@@ -74,36 +42,3 @@ services:
       - /dockerdata/dockervol/pihole/dnsmasq:/etc/dnsmasq.d/
     # Recommended but not required (DHCP needs NET_ADMIN)
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
-  
-  syncthing:
-    image: syncthing/syncthing
-    hostname: my-syncthing
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /dockerdata:/var/syncthing
-    #ports:
-    #  - 8384:8384
-    #  - 22000:22000/tcp
-    #  - 22000:22000/udp
-    restart: unless-stopped
-    deploy:
-      mode: global
-    networks:
-      - outside
-  
-  mosquitto:
-    image: eclipse-mosquitto
-    ports:
-      - 1883:1883
-      - 8883:8883
-    volumes:
-      -  /dockerdata/dockervol/mosquitto/data:/mosquitto/data
-      -  /dockerdata/dockervol/mosquitto/logs:/mosquitto/logs
-      -  /dockerdata/dockervol/mosquitto/config:/mosquitto/config
-      
-networks:
-  outside:
-    external:
-      name: "host"
