@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.6"
 services:
   plex:
     image: lscr.io/linuxserver/plex
@@ -16,15 +16,15 @@ services:
     devices:
       - /dev/dri:/dev/dri
     restart: unless-stopped
-    
+
   tautulli:
     image: lscr.io/linuxserver/tautulli
     container_name: tautulli
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
-  volumes:
+      - TZ=America/Toronto
+    volumes:
       - /data/tautulli/:/config
       - /data/scripts:/scripts
       - /nfs/media/TV:/tv
@@ -32,14 +32,14 @@ services:
     ports:
       - 8181:8181
     restart: unless-stopped
-    
+
   ombi:
     image: lscr.io/linuxserver/ombi
     container_name: ombi
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Montreal
+      - TZ=America/Toronto
     volumes:
       - /data/ombi/:/config
     ports:
