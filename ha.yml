@@ -17,3 +17,14 @@ services:
        placement:
          constraints:
            - node.labels.zwave==true
+           
+  node-red:
+    image: nodered/node-red:latest
+    tty: true
+    stop_signal: SIGINT
+    environment:
+      - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
+    volumes:
+      - /data/gluster/node-red
+    ports:
+      - '1880:18001' # port for web interface
