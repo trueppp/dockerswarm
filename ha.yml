@@ -8,7 +8,7 @@ services:
       - SESSION_SECRET=mysupersecretkey
       - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
     volumes:
-      - /dockerdata/dockervol/zwave/store:/usr/src/app/store
+      - /data/gluster/zwave/store:/usr/src/app/store
       - /dev/zwave:/dev/ttyACM0
     ports:
       - '8091:8091' # port for web interface
