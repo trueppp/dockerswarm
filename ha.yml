@@ -27,4 +27,4 @@ services:
     volumes:
       - /data/gluster/node-red
     ports:
-      - '1880:18001' # port for web interface
+      - '1880:1880' # port for web interface
