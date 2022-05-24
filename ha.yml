@@ -36,6 +36,9 @@ services:
     volumes:
       - /data/gluster/zigbee:/app/data
       - /dev/zigbee-serial:/dev/zigbee-serial
+    ports:
+      # Frontend port
+      - 8080:8080
     deploy:
           placement:
             constraints:
