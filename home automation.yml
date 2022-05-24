@@ -29,4 +29,3 @@ services:
           placement:
             constraints:
               - node.labels.zigbee==true
-	
