@@ -28,3 +28,15 @@ services:
       - /data/gluster/node-red:/data
     ports:
       - '1880:1880' # port for web interface
+      
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt:latest-dev
+    environment:
+      - TZ=America/Toronto
+    volumes:
+      - /data/gluster/zigbee:/app/data
+      - /dev/zigbee-serial:/dev/zigbee-serial
+    deploy:
+          placement:
+            constraints:
+              - node.labels.zigbee==true
