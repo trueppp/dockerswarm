@@ -17,3 +17,16 @@ services:
        placement:
          constraints:
            - node.labels.zwave==true
+           
+  zigbee2mqtt:
+	  image: koenkk/zigbee2mqtt:latest-dev
+  	environment:
+	    - TZ=Europe/Amsterdam
+	  volumes:
+	    - /mnt/docker-cluster/zigbee2mqtt/data:/app/data
+	    - /dev/zigbee-serial:/dev/zigbee-serial
+	  deploy:
+	    placement:
+		    constraints: 
+          - node.labels.zigbee==true
+	  
