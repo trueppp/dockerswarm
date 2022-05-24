@@ -68,7 +68,8 @@ services:
       - TZ=America/Toronto
     volumes:
       - /data/gluster/nzbget:/config
-      - /nfs/diskstation/downloads/:/downloads #optional
+      - /bigdrive/nzbget/:downloads
+      - /nfs/diskstation/downloads/completed:/complete #optional
     ports:
       - 6790:6789
     restart: unless-stopped
