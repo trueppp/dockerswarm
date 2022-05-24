@@ -27,6 +27,6 @@ services:
       - /dev/zigbee-serial:/dev/zigbee-serial
     deploy:
           placement:
-            constraints: 
-	      - node.labels.zigbee==true
+            constraints:
+              - node.labels.zigbee==true
 	
