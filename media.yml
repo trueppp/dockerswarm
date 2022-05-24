@@ -1,22 +1,5 @@
 version: "3.6"
 services:
-  plex:
-    image: lscr.io/linuxserver/plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - VERSION=docker
-      - PLEX_CLAIM= #optional
-      - TZ=America/Toronto
-    volumes:
-      - /data/bigdrive/plex:/config
-      - /nfs/media/TV:/tv
-      - /nfs/media/Movies:/movies
-    devices:
-      - /dev/dri:/dev/dri
-    restart: unless-stopped
-
   tautulli:
     image: lscr.io/linuxserver/tautulli
     container_name: tautulli
@@ -25,8 +8,8 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /data/tautulli/:/config
-      - /data/scripts:/scripts
+      - /data/gluster/tautulli/:/config
+      - /data/gluster/scripts:/scripts
       - /nfs/media/TV:/tv
       - /nfs/media/Movies:/movies
     ports:
@@ -39,9 +22,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Toronto
+      - TZ=America/Montreal
     volumes:
-      - /data/ombi/:/config
+      - /data/gluster/ombi/:/config
     ports:
       - 3579:3579
     restart: unless-stopped
@@ -54,9 +37,9 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /data/radarr/:/config
+      - /data/gluster/radarr/:/config
       - /nfs/media/Movies/:/movies #optional
-      - /data/bigdrive/nzbget/completed/Movies:/downloads #optional
+      - /nfs/diskstation/downloads/completed/Movies:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -69,9 +52,9 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /data/sonarr/:/config
+      - /data/gluster/sonarr/:/config
       - /nfs/media/TV/:/tv #optional
-      - /data/bigdrive/nzbget/completed/Series:/downloads #optional
+      - /nfs/diskstation/downloads/completed/Series:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -84,8 +67,39 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /data/nzbget:/config
-      - /data/bigdrive/nzbget:/downloads #optional
+      - /data/gluster/nzbget:/config
+      - /nfs/diskstation/downloads/completed:/downloads #optional
     ports:
       - 6790:6789
     restart: unless-stopped
+ 
+volumes:
+  synology_homes:
+    driver_opts:
+      type: "nfs"
+      o: "nfsvers=3,addr=10.0.0.5,rw"
+      device: ":/volume2/homes/"
+      
+  nzbget_downloads:
+    driver_opts:
+      type: "nfs"
+      o: "nfsvers=3,addr=10.0.0.5,rw"
+      device: ":/volume2/downloads/"
+      
+  plex_media_tv:
+    driver: rclone
+    driver_opts:
+      remote: 'MediaU:/TV'
+      allow_other: 'true'
+      vfs_cache_mode: full
+      poll_interval: 0
+      vfs-cache-max-size: 50G
+
+  plex_media_movies:
+    driver: rclone
+    driver_opts:
+      remote: 'MediaU:/Movies'
+      allow_other: 'true'
+      vfs_cache_mode: full
+      poll_interval: 0
+      vfs-cache-max-size: 50G
