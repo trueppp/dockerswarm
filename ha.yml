@@ -7,6 +7,8 @@ services:
     environment:
       - SESSION_SECRET=mysupersecretkey
       - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
+      - PUID=1000
+      - PGID=1000
     volumes:
       - /data/gluster/zwave/store:/usr/src/app/store
       - /dev/zwave:/dev/ttyACM0
@@ -23,6 +25,8 @@ services:
     tty: true
     stop_signal: SIGINT
     environment:
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
     volumes:
       - /data/gluster/node-red:/data
@@ -33,6 +37,8 @@ services:
     image: koenkk/zigbee2mqtt:latest-dev
     environment:
       - TZ=America/Toronto
+      - PUID=1000
+      - PGID=1000
     volumes:
       - /data/gluster/zigbee:/app/data
       - /dev/zigbee-serial:/dev/zigbee
