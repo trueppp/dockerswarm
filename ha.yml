@@ -41,7 +41,7 @@ services:
       - PGID=1000
     volumes:
       - /data/gluster/zigbee:/app/data
-      - /dev/zigbee-serial:/dev/zigbee
+      - /dev/zigbee-serial/:/dev/zigbee
     ports:
       # Frontend port
       - 8080:8080
