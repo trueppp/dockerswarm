@@ -29,7 +29,10 @@ services:
       - '81:81' # Admin Web Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
-
+    environment:
+      TZ: 'America/Montreal'
+      PUID: 1000
+      PGID: 1000
     # Uncomment the next line if you uncomment anything in the section
     # environment:
       # Uncomment this if you want to change the location of 
