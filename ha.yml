@@ -1,5 +1,6 @@
 version: "3.4"
 services:
+
   zwavejs2mqtt:
     image: zwavejs/zwavejs2mqtt:latest
     tty: true
@@ -32,20 +33,35 @@ services:
       - /data/gluster/node-red:/data
     ports:
       - '1880:1880' # port for web interface
-      
-  zigbee2mqtt:
-    image: koenkk/zigbee2mqtt:latest-dev
+
+  mosquitto:
+    image: eclipse-mosquitto
+    tty: true
+    stop_signal: SIGINT
     environment:
-      - TZ=America/Toronto
       - PUID=1000
       - PGID=1000
+      - TZ=America/Toronto  # uncomment and edit to match you timezone if you want logs time and dates to match your timezone instead of UTC.
     volumes:
-      - /data/gluster/zigbee:/app/data
-      - /dev/zigbee-serial:/dev/zigbee
+      - /data/gluster/mosquitto/config:/mosquitto/config
+      - /data/gluster/mosquitto/data:/mosquitto/data
+      - /data/gluster/mosquitto/log:/mosquitto/log
     ports:
-      # Frontend port
-      - 8080:8080
-    deploy:
-          placement:
-            constraints:
-              - node.labels.zigbee==true
+      - '1880:1880' # port for web interface
+
+  # zigbee2mqtt:
+  #   image: koenkk/zigbee2mqtt:latest-dev
+  #   environment:
+  #     - TZ=America/Toronto
+  #     - PUID=1000
+  #     - PGID=1000
+  #   volumes:
+  #     - /data/gluster/zigbee:/app/data
+  #     - /dev/zigbee-serial:/dev/zigbee
+  #   ports:
+  #     # Frontend port
+  #     - 8080:8080
+  #   deploy:
+  #         placement:
+  #           constraints:
+  #             - node.labels.zigbee==true
