@@ -47,7 +47,7 @@ services:
       - /data/gluster/mosquitto/data:/mosquitto/data
       - /data/gluster/mosquitto/log:/mosquitto/log
     ports:
-      - '1880:1880' # port for web interface
+      - '1883:1883' # port for web interface
 
   # zigbee2mqtt:
   #   image: koenkk/zigbee2mqtt:latest-dev
