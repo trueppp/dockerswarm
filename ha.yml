@@ -49,6 +49,19 @@ services:
     ports:
       - '1883:1883' # port for web interface
 
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:latest
+    container_name: homeassistant
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /data/gluster/homeassistant/:/config
+    ports:
+      - 8123:8123 #optional
+    restart: unless-stopped
+
   # zigbee2mqtt:
   #   image: koenkk/zigbee2mqtt:latest-dev
   #   environment:
