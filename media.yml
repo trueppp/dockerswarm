@@ -52,7 +52,7 @@ services:
     volumes:
       - /data/gluster/radarr/:/config
       - /nfs/media/Movies/:/movies #optional
-      - /nfs/diskstation/downloads/completed/Movies:/downloads #optional
+      - /bigdrive/nzbget/completed/Movies:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -67,7 +67,7 @@ services:
     volumes:
       - /data/gluster/sonarr/:/config
       - /nfs/media/TV/:/tv #optional
-      - /nfs/diskstation/downloads/completed/Series:/downloads #optional
+      - /bigdrive/nzbget/completed/Series:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -82,7 +82,7 @@ services:
     volumes:
       - /data/gluster/nzbget:/config
       - /bigdrive/nzbget/:/downloads
-      - /nfs/diskstation/downloads/completed:/complete #optional
+      #- /nfs/diskstation/downloads/completed:/complete #optional
     ports:
       - 6790:6789
     restart: unless-stopped
