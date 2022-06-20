@@ -45,3 +45,16 @@ services:
     volumes:
       - /data/gluster/npm/data:/data
       - /data/gluster/npm/letsencrypt:/etc/letsencrypt
+
+  organizr:
+      image: organizr/organizr
+      container_name: organizr
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=America/Toronto
+      volumes:
+        - /data/gluster/organizr:/config
+      ports:
+        - 9983:80
+      restart: unless-stopped
