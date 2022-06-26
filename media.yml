@@ -28,20 +28,22 @@ services:
     ports:
       - 5055:5055
     restart: unless-stopped
-
-  ombi:
-    image: lscr.io/linuxserver/ombi
-    container_name: ombi
+  
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Montreal
+      - TZ=America/Toronto
     volumes:
-      - /data/gluster/ombi/:/config
+      - /data/gluster/bazarr/config:/config
+      - /nfs/media/Movies:/movies #optional
+      - /nfs/media/TV:/tv #optional
     ports:
-      - 3579:3579
+      - 6767:6767
     restart: unless-stopped
-   
+    
   radarr:
     image: ghcr.io/linuxserver/radarr
     container_name: radarr
