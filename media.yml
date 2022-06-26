@@ -37,7 +37,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /data/gluster/bazarr/config:/config
+      - /data/gluster/bazarr:/config
       - /nfs/media/Movies:/movies #optional
       - /nfs/media/TV:/tv #optional
     ports:
